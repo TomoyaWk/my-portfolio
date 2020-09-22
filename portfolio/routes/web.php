@@ -11,10 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home'); //初期画面表示 
+Route::get('/admin', 'AdminController@index')->name('admin'); //投稿画面表示 

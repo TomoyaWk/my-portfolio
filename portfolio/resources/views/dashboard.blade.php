@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <example-component></example-component>
+    <div>
+        <h1>dash borad</h1>
+
+    </div>
 @endsection
