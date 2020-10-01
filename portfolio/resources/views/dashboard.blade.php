@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        <h1>dash borad</h1>
+        <h1>dash board</h1>
 
     </div>
 @endsection

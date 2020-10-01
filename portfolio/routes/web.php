@@ -14,5 +14,6 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home'); //初期画面表示 
 Route::get('/admin', 'AdminController@index')->name('admin'); //投稿画面表示 
+
+Route::get('{any}', function () { return view('home'); }) ->where('any', '.*'); //初期画面表示 
