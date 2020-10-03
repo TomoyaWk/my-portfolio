@@ -16,10 +16,7 @@
     
     
     <div id="app">
-        <h1><a>linked</a>test</h1>
-        <h2>test</h2>
-        <h3>test</h3>
-        <example-component></example-component>
+        <router-view></router-view>
     </div>
 
 
