@@ -15,7 +15,7 @@
     <body>
     
     
-    <div id="app">
+    <div class="font-sans" id="app">
         <router-view></router-view>
     </div>
 

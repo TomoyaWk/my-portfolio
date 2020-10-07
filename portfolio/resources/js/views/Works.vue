@@ -1,17 +1,25 @@
 <template>
     <div>
-        <header-menu></header-menu>
-        <div class="container mx-auto">
-        <heading heading="WORKS"></heading>
-        </div>
+        <HeaderMenu></HeaderMenu>
+        <FadeAnimation>
+            <div class="container mx-auto text-center">
+                <Heading heading="WORKS"></Heading>
+                <p class="text-base my-5 mx-1">
+                    個人開発で作ったものを載せていく予定です。
+                </p>
+            </div>
+        </FadeAnimation>
     </div>
 </template>
 
 <script>
-import heading from "../components/Heading.vue"
+import Heading from "../components/Heading.vue";
+import FadeAnimation from "../components/FadeAnimation.vue";
+
 export default {
-    components:{
-        heading
+    components: {
+        Heading,
+        FadeAnimation
     }
-}
+};
 </script>

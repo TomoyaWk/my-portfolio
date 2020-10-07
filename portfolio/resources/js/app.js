@@ -4,9 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
-import router from './router'
-window.Vue = require('vue');
+require("./bootstrap");
+import router from "./router";
+window.Vue = require("vue");
 
 /**
  * The following block of code may be used to automatically register your
@@ -19,13 +19,11 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('Home', require('./views/Home.vue').default);
-Vue.component('Works', require('./views/Works.vue').default);
-Vue.component('Blog', require('./views/Blog.vue').default);
+Vue.component("Home", require("./views/Home.vue").default);
+Vue.component("Works", require("./views/Works.vue").default);
+Vue.component("Blog", require("./views/Blog.vue").default);
 
-
-
-Vue.component('header-menu', require('./components/HeaderMenu.vue').default);
+Vue.component("HeaderMenu", require("./components/HeaderMenu.vue").default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -35,5 +33,5 @@ Vue.component('header-menu', require('./components/HeaderMenu.vue').default);
 
 const app = new Vue({
     router,
-    el: '#app',
+    el: "#app"
 });
