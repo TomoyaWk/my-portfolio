@@ -17,7 +17,7 @@
             </h1>
             <ul class="mt-2">
                 <li
-                    class="bg-gray-400 px-2 py-1 m-1 text-sm text-black inline-block rounded-full"
+                    class="bg-gray-400 px-3 py-1 m-1 text-sm text-black inline-block rounded-full"
                     v-for="fw in frameworks"
                     :key="fw"
                 >

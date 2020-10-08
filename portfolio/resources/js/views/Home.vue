@@ -4,7 +4,7 @@
         <FadeAnimation>
             <div class="container mx-auto text-center">
                 <section>
-                    <heading heading="ABOUT ME"></heading>
+                    <Heading heading="ABOUT ME"></Heading>
 
                     <div class="avator mx-auto">
                         <img
