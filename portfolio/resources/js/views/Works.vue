@@ -11,22 +11,23 @@
                     <WorksBox
                         title="ポートフォリオサイト"
                         :skills="useTech"
+                        note="このサイトです、初めての個人開発。"
                     ></WorksBox>
-                    <WorksBox
-                        class="hidden"
+
+                    <!-- <WorksBox
                         title="ポートフォリオサイト"
                         :skills="useTech"
+                        note="このサイトです、初めての個人開発。"
                     ></WorksBox>
                     <WorksBox
-                        class="hidden"
                         title="ポートフォリオサイト"
                         :skills="useTech"
+                        note="このサイトです、初めての個人開発。"
                     ></WorksBox>
                     <WorksBox
-                        class="hidden"
                         title="ポートフォリオサイト"
                         :skills="useTech"
-                    ></WorksBox>
+                    ></WorksBox> -->
                 </div>
             </div>
         </FadeAnimation>
