@@ -2088,6 +2088,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Heading_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Heading.vue */ "./resources/js/components/Heading.vue");
 /* harmony import */ var _components_FadeAnimation_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/FadeAnimation.vue */ "./resources/js/components/FadeAnimation.vue");
 /* harmony import */ var _components_BlogBox_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/BlogBox.vue */ "./resources/js/components/BlogBox.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 //
 //
 //
@@ -2105,6 +2107,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 
@@ -2116,18 +2120,18 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      postData: [{
-        "postId": "1",
-        "postDate": "2020/9/1",
-        "postTitle": "ブログタイトル１",
-        "leadText": "leadtextleadtextleadtextleadtext"
-      }, {
-        "postId": "2",
-        "postDate": "2020/9/1",
-        "postTitle": "ブログタイトル2",
-        "leadText": "leadtext2leadtextleadtextleadtext"
-      }]
+      loading: true,
+      postData: []
     };
+  },
+  created: function created() {
+    var url = '/api/post';
+    var self = this;
+    axios__WEBPACK_IMPORTED_MODULE_3___default.a.get(url).then(function (res) {
+      console.log(res.data);
+      self.postData = res.data;
+      self.loading = false;
+    });
   }
 });
 
@@ -38949,16 +38953,42 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.loading,
+                    expression: "loading"
+                  }
+                ],
+                staticClass: "loader"
+              },
+              [_vm._v("Now loading...")]
+            ),
+            _vm._v(" "),
             _vm._l(_vm.postData, function(post) {
               return _c(
                 "div",
-                { key: post.postId },
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.loading,
+                      expression: "!loading"
+                    }
+                  ],
+                  key: post.postId
+                },
                 [
                   _c("BlogBox", {
                     attrs: {
-                      "post-title": post.postTitle,
-                      "post-date": post.postDate,
-                      "lead-text": post.leadText
+                      "post-title": post.title,
+                      "post-date": post.created_at,
+                      "lead-text": post.content
                     }
                   })
                 ],

@@ -7,8 +7,9 @@
                 <p class="text-base my-5 mx-1">
                     作成したものに関する記事など雑記を投稿していく予定です。
                 </p>
-            <div v-for="post in postData" :key="post.postId">
-                <BlogBox :post-title="post.postTitle" :post-date="post.postDate" :lead-text="post.leadText"></BlogBox>
+            <div v-show="loading" class="loader">Now loading...</div>
+            <div v-show="!loading" v-for="post in postData" :key="post.postId">
+                <BlogBox :post-title="post.title" :post-date="post.created_at" :lead-text="post.content"></BlogBox>
             </div>
             </div>
         </FadeAnimation>
@@ -19,6 +20,7 @@
 import Heading from "../components/Heading.vue";
 import FadeAnimation from "../components/FadeAnimation.vue";
 import BlogBox from "../components/BlogBox.vue";
+import axios from "axios";
 
 export default {
     components: {
@@ -26,23 +28,24 @@ export default {
         FadeAnimation,
         BlogBox
     },
-    data: () => {
+    data:()=> {
         return {
-            postData:[
-                {
-                    "postId": "1",
-                    "postDate": "2020/9/1",
-                    "postTitle": "ブログタイトル１",
-                    "leadText": "leadtextleadtextleadtextleadtext", 
-                },
-                {
-                    "postId": "2",
-                    "postDate": "2020/9/1",
-                    "postTitle": "ブログタイトル2",
-                    "leadText": "leadtext2leadtextleadtextleadtext",
-                }
-            ]
+            loading: true,
+            postData:[],
         };
-    }
+    },
+    created() {
+        let url = '/api/post';
+        let self = this;
+        axios
+        .get(url)
+        .then(function(res){
+            console.log(res.data)
+            self.postData = res.data;
+            self.loading = false;
+        })
+    },
+
+    
 };
 </script>

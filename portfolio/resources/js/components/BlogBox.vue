@@ -16,7 +16,9 @@
 <script>
 export default {
     props: ["postTitle", "postDate", "leadText"],
-    computed: {}
+    computed: {
+        
+    }
 };
 </script>
 
