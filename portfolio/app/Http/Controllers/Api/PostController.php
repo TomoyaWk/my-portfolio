@@ -11,14 +11,29 @@ use App\Post;
 class PostController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     *Blogページ用公開記事の一覧取得
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function list()
+    {
+        $model = new Post();
+        $postData = $model->getPublicPost();
+
+        return $postData;
+    }
+
+
+    /**
+     * ログイン後の記事一覧ページ
+     * 公開・非公開記事すべての一覧取得.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $model = new Post();
-        $postData = $model->getPublicPost();
+        $postData = $model->getAllPost();
 
         return $postData;
     }
@@ -45,7 +60,7 @@ class PostController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * ID指定で記事情報取得.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

@@ -26,7 +26,7 @@ class Post extends Model
     /**
      * 下書き状態でない（公開）の記事データを取得する
      * 
-     * 
+     * retrurn obuject $data
      */
     public function getPublicPost()
     {

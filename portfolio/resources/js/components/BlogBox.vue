@@ -7,7 +7,7 @@
                 <h1 class="font-bold text-2xl text-green-600">
                     <span class="post-title"> {{ postTitle }}</span> 
                 </h1>
-                <p>{{ leadText }}</p>
+                <p>{{ formatLeadTxt + '....' }}</p>
             </div>
         </a>
     </div>
@@ -17,6 +17,9 @@
 export default {
     props: ["postTitle", "postDate", "leadText"],
     computed: {
+        formatLeadTxt(){
+            return this.leadText.slice(0,45);
+        }
         
     }
 };

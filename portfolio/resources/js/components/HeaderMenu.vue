@@ -1,5 +1,5 @@
 <template>
-    <nav class="border-b-4 border-green-600">
+    <nav class="border-t-8 border-green-600">
         <ul class="flex flex-row  justify-around lg:justify-center my-5">
             <li class="menu font-bold text-2xl text-green-600 lg:mx-20">
                 <router-link to="/">Home</router-link>

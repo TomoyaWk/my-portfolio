@@ -1925,7 +1925,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["postTitle", "postDate", "leadText"],
-  computed: {}
+  computed: {
+    formatLeadTxt: function formatLeadTxt() {
+      return this.leadText.slice(0, 45);
+    }
+  }
 });
 
 /***/ }),
@@ -2125,7 +2129,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    var url = '/api/post';
+    var url = '/api/post/list';
     var self = this;
     axios__WEBPACK_IMPORTED_MODULE_3___default.a.get(url).then(function (res) {
       console.log(res.data);
@@ -38653,7 +38657,7 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("p", [_vm._v(_vm._s(_vm.leadText))])
+          _c("p", [_vm._v(_vm._s(_vm.formatLeadTxt + "...."))])
         ])
       ])
     ]
@@ -38710,7 +38714,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { staticClass: "border-b-4 border-green-600" }, [
+  return _c("nav", { staticClass: "border-t-8 border-green-600" }, [
     _c(
       "ul",
       { staticClass: "flex flex-row  justify-around lg:justify-center my-5" },
@@ -39074,7 +39078,7 @@ var render = function() {
                   },
                   [
                     _c("img", {
-                      staticClass: "mx-2 w-15",
+                      staticClass: "mx-2 w-15 hover:opacity-75",
                       attrs: { src: "/img/icon_twitter.svg", alt: "twitter" }
                     })
                   ]
@@ -39090,7 +39094,7 @@ var render = function() {
                   },
                   [
                     _c("img", {
-                      staticClass: "mx-2 w-15",
+                      staticClass: "mx-2 w-15 hover:opacity-75",
                       attrs: { src: "/img/icon_github.svg", alt: "github" }
                     })
                   ]
@@ -39101,7 +39105,7 @@ var render = function() {
                   { attrs: { href: "mailto:tomoya.portfolio@gmail.com" } },
                   [
                     _c("img", {
-                      staticClass: "mx-2 w-15",
+                      staticClass: "mx-2 w-15 hover:opacity-75",
                       attrs: { src: "/img/icon_mail.svg", alt: "mail" }
                     })
                   ]

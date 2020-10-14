@@ -5,6 +5,9 @@ module.exports = {
     },
     purge: [],
     theme: {
+        fontfamily:{
+            'sans':'Helvetica Neue,Arial,Hiragino Sans,Hiragino Kaku Gothic ProN,BIZ UDPGothic,Meiryo,sans-serif'
+        },
         extend: {
             colors: {
                 black: {

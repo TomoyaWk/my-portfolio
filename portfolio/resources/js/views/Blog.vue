@@ -35,7 +35,7 @@ export default {
         };
     },
     created() {
-        let url = '/api/post';
+        let url = '/api/post/list';
         let self = this;
         axios
         .get(url)
