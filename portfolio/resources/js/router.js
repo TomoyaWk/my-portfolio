@@ -3,6 +3,7 @@ import Router from "vue-router";
 import Home from "./views/Home";
 import Works from "./views/Works";
 import Blog from "./views/Blog";
+import Article from "./views/Article";
 
 Vue.use(Router);
 
@@ -23,6 +24,12 @@ export default new Router({
             path: "/blog/list",
             name: "blog",
             component: Blog
-        }
+        },
+        {
+            path: "/blog/:id",
+            name: "article",
+            component: Article
+        },
+        
     ]
 });

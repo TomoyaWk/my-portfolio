@@ -49,8 +49,8 @@ class PostController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
+     * 
+     * 
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -67,7 +67,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $model = new Post();
+        $postData = $model->getIndivPost($id);
+
+        return $postData;
     }
 
     /**

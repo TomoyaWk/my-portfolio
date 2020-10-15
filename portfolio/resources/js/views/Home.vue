@@ -5,7 +5,6 @@
             <div class="container mx-auto text-center">
                 <section>
                     <Heading heading="ABOUT ME"></Heading>
-
                     <div class="avator mx-auto">
                         <img
                             class="w-40 rounded-full mx-auto my-5 p-2 border-green-600 border-4"

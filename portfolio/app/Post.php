@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Stmt\TryCatch;
+
+use function PHPSTORM_META\type;
 
 class Post extends Model
 {
@@ -32,6 +35,20 @@ class Post extends Model
     {
         $post = DB::table(self::TABLE);
         $data = $post->where('draft_flg', '=',  "0")->get();
+
+        return $data;
+    }
+
+    /**
+     * 
+     * 
+     */
+    public function getIndivPost($id)
+    {
+        $post = DB::table(self::TABLE);
+
+
+        $data = $post->where('post_id', '=', $id)->get();
 
         return $data;
     }

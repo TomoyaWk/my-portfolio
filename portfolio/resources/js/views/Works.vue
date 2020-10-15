@@ -13,7 +13,6 @@
                         :skills="useTech"
                         note="このサイトです、初めての個人開発。"
                     ></WorksBox>
-
                     <!-- <WorksBox
                         title="ポートフォリオサイト"
                         :skills="useTech"

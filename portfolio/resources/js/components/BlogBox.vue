@@ -1,21 +1,24 @@
 <template>
     <div class="text-left w-4/5 mx-auto my-5 p-3 border-green-600 border-2 ">
         
-        <a href="#">
             <div class="my-5">
                 <span class="text-md text-gray-500">{{ postDate }}</span>
+            
+            <router-link :to="{ name:'article', params:{ id: postId } }">
                 <h1 class="font-bold text-2xl text-green-600">
                     <span class="post-title"> {{ postTitle }}</span> 
                 </h1>
+            </router-link>
+
                 <p>{{ formatLeadTxt + '....' }}</p>
             </div>
-        </a>
+        
     </div>
 </template>
 
 <script>
 export default {
-    props: ["postTitle", "postDate", "leadText"],
+    props: ["postId", "postTitle", "postDate", "leadText"],
     computed: {
         formatLeadTxt(){
             return this.leadText.slice(0,45);

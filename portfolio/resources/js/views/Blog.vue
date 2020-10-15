@@ -9,7 +9,7 @@
                 </p>
             <div v-show="loading" class="loader">Now loading...</div>
             <div v-show="!loading" v-for="post in postData" :key="post.postId">
-                <BlogBox :post-title="post.title" :post-date="post.created_at" :lead-text="post.content"></BlogBox>
+                <BlogBox :post-id="post.post_id" :post-title="post.title" :post-date="post.created_at" :lead-text="post.content"></BlogBox>
             </div>
             </div>
         </FadeAnimation>
@@ -40,7 +40,6 @@ export default {
         axios
         .get(url)
         .then(function(res){
-            console.log(res.data)
             self.postData = res.data;
             self.loading = false;
         })
