@@ -25,21 +25,21 @@
                     <div class="flex flex-row justify-center my-5">
                         <a href="https://twitter.com/waka_000" target="_blank">
                             <img
-                                class="mx-2 w-15 hover:opacity-75"
+                                class="mx-2 w-15 transform hover:scale-90 ease-in-out duration-300"
                                 :src="'/img/icon_twitter.svg'"
                                 alt="twitter"
                             />
                         </a>
                         <a href="https://github.com/TomoyaWk" target="_blank">
                             <img
-                                class="mx-2 w-15 hover:opacity-75"
+                                class="mx-2 w-15 transform hover:scale-90 ease-in-out duration-300"
                                 :src="'/img/icon_github.svg'"
                                 alt="github"
                             />
                         </a>
                         <a href="mailto:tomoya.portfolio@gmail.com">
                             <img
-                                class="mx-2 w-15 hover:opacity-75"
+                                class="mx-2 w-15 transform hover:scale-90 ease-in-out duration-300"
                                 :src="'/img/icon_mail.svg'"
                                 alt="mail"
                             />

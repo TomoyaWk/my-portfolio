@@ -5,12 +5,12 @@
         <FadeAnimation>
             <div>
                 <div v-show="loading" class="loader">Now loading...</div>
-                <div v-show="!loading" class="container w-1/2 mx-auto text-left">
+                <div v-show="!loading" class="article container w-1/2 mx-auto text-left">
+                <article>
                     <h1>{{ postData.title }}</h1>
                     <h1>{{ postData.created_at }}</h1>
-                    <p>
-                        {{ postData.content }}
-                    </p>
+                    <div v-html="parsedMdtext"></div>
+                </article>
                 </div>
             </div>
         </FadeAnimation>
@@ -21,6 +21,7 @@
 import Heading from "../components/Heading.vue";
 import FadeAnimation from "../components/FadeAnimation.vue";
 import axios from "axios";
+import marked from 'marked';
 
 export default {
     components: {
@@ -55,6 +56,11 @@ export default {
                 })
             }
     },
+    computed:{
+            parsedMdtext: function(){
+                return marked(this.postData.content);
+            }
+    }
 
 };
 </script>

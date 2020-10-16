@@ -4,6 +4,7 @@ import Home from "./views/Home";
 import Works from "./views/Works";
 import Blog from "./views/Blog";
 import Article from "./views/Article";
+import AdminIndex from "./views/AdminIndex";
 
 Vue.use(Router);
 
@@ -30,6 +31,10 @@ export default new Router({
             name: "article",
             component: Article
         },
-        
+        {
+            path: "/admin",
+            name: "adminIndex",
+            component: AdminIndex
+        }
     ]
 });

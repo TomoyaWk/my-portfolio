@@ -40,8 +40,9 @@ class Post extends Model
     }
 
     /**
+     * 個別記事データ取得
      * 
-     * 
+     * retrurn obuject $data
      */
     public function getIndivPost($id)
     {
