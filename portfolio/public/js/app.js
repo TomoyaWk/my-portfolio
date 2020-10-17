@@ -2105,6 +2105,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2112,10 +2129,16 @@ __webpack_require__.r(__webpack_exports__);
       posts: []
     };
   },
+  methods: {
+    isDraft: function isDraft(val) {
+      return val === 1 ? '下書き' : '公開';
+    }
+  },
   mounted: function mounted() {
     var _this = this;
 
     axios.get('/api/post').then(function (res) {
+      console.log(res);
       _this.posts = res.data;
     })["catch"](function (error) {
       _this.message = 'データの取得に失敗しました。';
@@ -41763,18 +41786,43 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _c(
-      "ul",
-      _vm._l(_vm.posts, function(post) {
-        return _c("li", { key: post }, [
-          _vm._v("\n            " + _vm._s(post.title) + "\n        ")
-        ])
-      }),
-      0
-    )
+    _c("table", { staticClass: "table table-striped table-hover my-5" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        _vm._l(_vm.posts, function(post) {
+          return _c("tr", { key: post.postId }, [
+            _c("td", [_vm._v(" " + _vm._s(post.post_id) + " ")]),
+            _vm._v(" "),
+            _c("td", [
+              _c("span", { staticClass: "badge badge-info p-2 text-white" }, [
+                _vm._v(" " + _vm._s(_vm.isDraft(post.draft_flg)) + " ")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("td", [_vm._v(" " + _vm._s(post.title) + "  ")])
+          ])
+        }),
+        0
+      )
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "table-success" }, [
+      _c("th", [_vm._v("postID")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Status")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("title")])
+    ])
+  }
+]
 render._withStripped = true
 
 
