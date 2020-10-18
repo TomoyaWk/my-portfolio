@@ -16,19 +16,19 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app-bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/markdown.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode(['apiToken' => \Auth::user()->api_token ?? null]) !!};
-        window.Laravel.appToken = "{{ Auth::user()->
-            api_token ?? null }}"
+        window.Laravel.appToken = "{{ Auth::user()->api_token ?? null }}"
     </script>
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/admin') }}">
-                <h4>DASH BOARD</h4>
+                <h4 class="h4">DASH BOARD</h4>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>

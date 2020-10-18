@@ -1,23 +1,26 @@
 <template>
-    <div class="posts">
+    <div class="main">
         <div v-if="message" class="alert alert-danger">
             {{ message }}
         </div>
+        
+        <button type="button" class="my-3 btn btn-success btn-lg">
+            新規作成
+        </button>
 
-
-        <table class="table table-striped table-hover my-5">
-            <thead class="table-success">
-                <th>postID</th>
-                <th>Status</th>
-                <th>title</th>
+        <table class="table table-bordered table-hover my-3">
+            <thead class="bg-success text-white">
+                <th scope="col" style="width:10%;">ID</th>
+                <th scope="col" style="width:10%;">ステータス</th>
+                <th scope="col" style="width:80%;">タイトル</th>
             </thead>
-            <tbody>
+            <tbody class="">
                 <tr v-for="post in posts" :key="post.postId">
                     <td> {{ post.post_id }} </td>
                     <td> 
                         <span class="badge badge-info p-2 text-white"> {{ isDraft(post.draft_flg) }} </span>
                     </td>
-                    <td> {{ post.title }}  </td>
+                    <td > {{ post.title }}  </td>
                 </tr>
             </tbody>
         </table>

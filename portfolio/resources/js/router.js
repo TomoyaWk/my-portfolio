@@ -5,6 +5,7 @@ import Works from "./views/Works";
 import Blog from "./views/Blog";
 import Article from "./views/Article";
 import AdminIndex from "./views/AdminIndex";
+import AdminPostCreate from "./views/AdminPostCreate";
 
 Vue.use(Router);
 
@@ -35,6 +36,11 @@ export default new Router({
             path: "/admin",
             name: "adminIndex",
             component: AdminIndex
+        },
+        {
+            path: "/admin/post/create",
+            name: "adminPostCreate",
+            component: AdminPostCreate
         }
     ]
 });

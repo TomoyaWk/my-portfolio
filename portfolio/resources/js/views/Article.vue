@@ -4,12 +4,13 @@
         
         <FadeAnimation>
             <div>
-                <div v-show="loading" class="loader">Now loading...</div>
-                <div v-show="!loading" class="article container w-1/2 mx-auto text-left">
+                <div v-if="loading" class="loader">Now loading...</div>
+                <div v-else class="article container w-1/2 mx-auto">
                 <article>
-                    <h1>{{ postData.title }}</h1>
-                    <h1>{{ postData.created_at }}</h1>
-                    <div v-html="parsedMdtext"></div>
+                    <Heading :heading="postData.title"></Heading>
+                    <time class="text-gray-500 mb-3" :datetime="postData.created_at">{{ postData.created_at }}</time>
+                    
+                    <ArticleBody :artcle-text="postData.content"></ArticleBody>
                 </article>
                 </div>
             </div>
@@ -20,13 +21,15 @@
 <script>
 import Heading from "../components/Heading.vue";
 import FadeAnimation from "../components/FadeAnimation.vue";
+import ArticleBody from "../components/ArticleBody.vue";
 import axios from "axios";
-import marked from 'marked';
+
 
 export default {
     components: {
         Heading,
         FadeAnimation,
+        ArticleBody,
     },
     data: () => {
         return {
@@ -44,23 +47,16 @@ export default {
         this.fetchData
     },
     methods: {
-            fetchData: function(){
-                let url = '/api/post/' + this.$route.params.id;
-                let self = this;
-                axios
-                .get(url)
-                .then(function(res){
-                    console.log(res);
-                    self.postData = res.data[0];
-                    self.loading = false;
-                })
-            }
+        fetchData: function(){
+            let url = '/api/post/' + this.$route.params.id;
+            let self = this;
+            axios
+            .get(url)
+            .then(function(res){
+                self.postData = res.data[0];
+                self.loading = false;
+            })
+        },
     },
-    computed:{
-            parsedMdtext: function(){
-                return marked(this.postData.content);
-            }
-    }
-
 };
 </script>

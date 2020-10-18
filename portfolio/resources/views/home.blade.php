@@ -12,7 +12,7 @@
         <!-- Styles -->
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/loading.css') }}" rel="stylesheet">
-
+        <link href="{{ asset('css/markdown.css') }}" rel="stylesheet">
         <script>
             window.Laravel = {};
             window.Laravel.csrfToken = "{{ csrf_token() }}";
