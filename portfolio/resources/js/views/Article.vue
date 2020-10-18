@@ -5,12 +5,14 @@
         <FadeAnimation>
             <div>
                 <div v-if="loading" class="loader">Now loading...</div>
-                <div v-else class="article container w-1/2 mx-auto">
+                <div v-else>
                 <article>
                     <Heading :heading="postData.title"></Heading>
-                    <time class="text-gray-500 mb-3" :datetime="postData.created_at">{{ postData.created_at }}</time>
+                    <div class="article container w-2/5 mx-auto">
+                        <time class="text-gray-500 mb-3" :datetime="postData.created_at">{{ postData.created_at }}</time>
                     
-                    <ArticleBody :artcle-text="postData.content"></ArticleBody>
+                        <ArticleBody :artcle-text="postData.content"></ArticleBody>
+                    </div>
                 </article>
                 </div>
             </div>

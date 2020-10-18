@@ -26,6 +26,7 @@
     "dependencies": {
         "laravel-mix-purgecss": "^5.0.0",
         "marked": "^1.2.0",
+        "mavon-editor": "^2.9.0",
         "tailwindcss": "^1.8.10",
         "vue-router": "^3.4.5"
     }

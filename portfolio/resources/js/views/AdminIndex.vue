@@ -4,9 +4,9 @@
             {{ message }}
         </div>
         
-        <button type="button" class="my-3 btn btn-success btn-lg">
+        <router-link to="/admin/post/create" tag="button" class="my-3 btn btn-success btn-lg">
             新規作成
-        </button>
+        </router-link>
 
         <table class="table table-bordered table-hover my-3">
             <thead class="bg-success text-white">

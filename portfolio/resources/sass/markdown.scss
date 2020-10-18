@@ -84,6 +84,16 @@
         margin: 15px 0;
     }
 
+    ul {
+        list-style-type: disc;
+    }
+    ul ul {
+        list-style-type: circle;
+    }
+    ul ul ul {
+        list-style-type: square;
+    }
+
     code,
     pre {
         border-radius: 3px;

@@ -83,6 +83,18 @@
   margin: 15px 0;
 }
 
+#markdown-text ul {
+  list-style-type: disc;
+}
+
+#markdown-text ul ul {
+  list-style-type: circle;
+}
+
+#markdown-text ul ul ul {
+  list-style-type: square;
+}
+
 #markdown-text code,
 #markdown-text pre {
   border-radius: 3px;
