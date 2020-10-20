@@ -25,9 +25,6 @@
             </tbody>
         </table>
 
-
-
-
     </div>
 </template>
 
@@ -44,7 +41,7 @@ export default {
             return (val === 1 ? '下書き' : '公開');
         }
     },
-    mounted() {
+    created() {
         axios.get('/api/post')
             .then(res => {
                 console.log(res);

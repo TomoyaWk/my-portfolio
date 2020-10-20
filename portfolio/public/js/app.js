@@ -2151,9 +2151,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2166,7 +2163,7 @@ __webpack_require__.r(__webpack_exports__);
       return val === 1 ? '下書き' : '公開';
     }
   },
-  mounted: function mounted() {
+  created: function created() {
     var _this = this;
 
     axios.get('/api/post').then(function (res) {
@@ -2212,6 +2209,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2220,11 +2230,24 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(mavon_editor__WEBPACK_IMPORTED_MO
   data: function data() {
     return {
       message: false,
-      posts: [],
-      value: ""
+      postTitle: "",
+      draftFlg: false,
+      postContent: ""
     };
   },
-  methods: {}
+  methods: {
+    createNewPost: function createNewPost() {
+      var _this = this;
+
+      axios.post('/api/post/create', {
+        "title": this.postTitle,
+        "content": this.postContent,
+        "draft_flg": this.draftFlg === 1 ? true : false
+      })["catch"](function (error) {
+        _this.message = 'データの更新に失敗しました。';
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -42117,34 +42140,127 @@ var render = function() {
     "div",
     { staticClass: "main" },
     [
-      _vm.message
-        ? _c("div", { staticClass: "alert alert-danger" }, [
-            _vm._v("\n        " + _vm._s(_vm.message) + "\n    ")
-          ])
-        : _vm._e(),
-      _vm._v(" "),
       _c(
-        "button",
-        { staticClass: "my-3 btn btn-success", attrs: { type: "button" } },
-        [_vm._v("\n        確定\n    ")]
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.message,
+              expression: "message"
+            }
+          ],
+          staticClass: "alert alert-danger"
+        },
+        [_vm._v("\n            " + _vm._s(_vm.message) + "\n        ")]
       ),
       _vm._v(" "),
       _c(
         "button",
-        { staticClass: "my-3 btn btn-alart", attrs: { type: "button" } },
-        [_vm._v("\n        キャンセル\n    ")]
+        {
+          staticClass: "my-3 btn btn-success",
+          on: { click: _vm.createNewPost }
+        },
+        [_vm._v("\n            投稿する\n        ")]
       ),
       _vm._v(" "),
-      _c("mavon-editor", {
-        attrs: { language: "ja" },
-        model: {
-          value: _vm.value,
-          callback: function($$v) {
-            _vm.value = $$v
+      _c(
+        "router-link",
+        {
+          staticClass: "mx-3 my-3 btn btn-alart",
+          attrs: { to: "/admin/", tag: "button" }
+        },
+        [_vm._v("\n            キャンセル\n        ")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.postTitle,
+              expression: "postTitle"
+            }
+          ],
+          staticClass: "form-control form-control-lg",
+          attrs: { type: "text", placeholder: "記事タイトル" },
+          domProps: { value: _vm.postTitle },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.postTitle = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group form-check" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.draftFlg,
+              expression: "draftFlg"
+            }
+          ],
+          staticClass: "form-check-input",
+          attrs: { type: "checkbox", id: "draft" },
+          domProps: {
+            checked: Array.isArray(_vm.draftFlg)
+              ? _vm._i(_vm.draftFlg, null) > -1
+              : _vm.draftFlg
           },
-          expression: "value"
-        }
-      })
+          on: {
+            change: function($event) {
+              var $$a = _vm.draftFlg,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = null,
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.draftFlg = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.draftFlg = $$a
+                      .slice(0, $$i)
+                      .concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.draftFlg = $$c
+              }
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "form-check-label", attrs: { for: "draft" } },
+          [_vm._v("下書きで保存する")]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        [
+          _c("mavon-editor", {
+            attrs: { language: "ja" },
+            model: {
+              value: _vm.postContent,
+              callback: function($$v) {
+                _vm.postContent = $$v
+              },
+              expression: "postContent"
+            }
+          })
+        ],
+        1
+      )
     ],
     1
   )
