@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
-
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 
 class PostController extends Controller
@@ -39,13 +39,24 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * 新規記事投稿
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $req)
     {
-        //
+        $postData = $req->all();
+
+        try {
+            Post::create([
+                'title' => $postData['title'],
+                'content' => $postData['content'],
+                'draft_flg' => $postData['draft_flg'],
+                'author_id' => 1
+            ]);
+        } catch (\Exception $e) {
+            throw new HttpException(500, $e->getMessage());
+        }
     }
 
     /**

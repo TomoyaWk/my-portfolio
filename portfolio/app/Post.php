@@ -4,13 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use PhpParser\Node\Stmt\TryCatch;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 use function PHPSTORM_META\type;
 
 class Post extends Model
 {
     const TABLE = 'post';
+    protected $table = 'post';
+    protected $fillable = [
+        'title', 'content', 'draft_flg', 'author_id', 'created_at', 'updated_at'
+    ];
 
     /**
      * 全記事データ取得
@@ -47,7 +51,6 @@ class Post extends Model
     public function getIndivPost($id)
     {
         $post = DB::table(self::TABLE);
-
 
         $data = $post->where('post_id', '=', $id)->get();
 

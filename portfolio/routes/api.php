@@ -23,7 +23,7 @@ Route::get('post/{id}', 'Api\PostController@show');  //個別記事ページ表�
 Route::group(['middleware' => ['auth:api']], function () {
     Route::get('post', 'Api\PostController@index'); //全件表示
     Route::post('post', 'Api\PostController@store'); //
-    Route::get('post/create', 'Api\PostController@create');
+    Route::post('post/create', 'Api\PostController@create');
     Route::post('post/{id}', 'Api\PostController@update');
     Route::delete('post/{id}', 'Api\PostController@delete');
 });
