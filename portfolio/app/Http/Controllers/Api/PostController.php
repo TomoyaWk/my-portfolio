@@ -62,7 +62,7 @@ class PostController extends Controller
                 'author_id' => 1
             ]);
         } catch (\Exception $e) {
-            abort(response()->json(['message' => 'error!'], 400));
+            return response()->json(['message' => 'error!'], 400);
         }
     }
 

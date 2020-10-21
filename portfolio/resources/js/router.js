@@ -36,7 +36,7 @@ export default new Router({
         {
             path: "/admin",
             name: "adminIndex",
-            component: AdminIndex
+            component: AdminIndex,
         },
         {
             path: "/admin/post/create",

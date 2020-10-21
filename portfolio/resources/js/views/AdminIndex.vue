@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <div v-if="message" class="alert alert-danger">
+        <div v-if="message" class="my-3 alert alert-danger">
             {{ message }}
         </div>
         
@@ -44,7 +44,6 @@ export default {
     created() {
         axios.get('/api/post')
             .then(res => {
-                console.log(res);
                 this.posts = res.data;
             })
             .catch(error => {

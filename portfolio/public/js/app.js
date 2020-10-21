@@ -2167,7 +2167,6 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('/api/post').then(function (res) {
-      console.log(res);
       _this.posts = res.data;
     })["catch"](function (error) {
       _this.message = 'データの取得に失敗しました。';
@@ -2235,17 +2234,19 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(mavon_editor__WEBPACK_IMPORTED_MO
   },
   methods: {
     createNewPost: function createNewPost() {
-      var _this = this;
-
       var self = this;
       axios.post('/api/post/create', {
         "title": this.postTitle,
         "content": this.postContent,
         "draft_flg": this.draftFlg === true ? 1 : 0
       }).then(function () {
-        self.$router.push("/admin");
+        self.message = "記事投稿完了しました。";
+        setTimeout(function () {
+          self.message = false;
+          self.$router.push("/admin");
+        }, 5000);
       })["catch"](function (error) {
-        _this.message = 'データの更新に失敗しました。';
+        self.message = 'データの更新に失敗しました。';
       });
     }
   }
@@ -42099,7 +42100,7 @@ var render = function() {
     { staticClass: "main" },
     [
       _vm.message
-        ? _c("div", { staticClass: "alert alert-danger" }, [
+        ? _c("div", { staticClass: "my-3 alert alert-danger" }, [
             _vm._v("\n        " + _vm._s(_vm.message) + "\n    ")
           ])
         : _vm._e(),
@@ -42195,7 +42196,7 @@ var render = function() {
               expression: "message"
             }
           ],
-          staticClass: "alert alert-danger"
+          staticClass: "my-3 alert alert-info"
         },
         [_vm._v("\n            " + _vm._s(_vm.message) + "\n        ")]
       ),

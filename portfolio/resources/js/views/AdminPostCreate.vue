@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-            <div v-show="message" class="alert alert-danger">
+            <div v-show="message" class="my-3 alert alert-info">
                 {{ message }}
             </div>
         
@@ -50,10 +50,16 @@ export default {
                 "draft_flg": (this.draftFlg === true ? 1 : 0),
             })
             .then(function(){
-                self.$router.push("/admin");
+                
+                self.message = "記事投稿完了しました。";
+
+                setTimeout(() => {
+                    self.message = false;
+                    self.$router.push("/admin");
+                }, 5000); 
             })
             .catch(error => {
-                this.message = 'データの更新に失敗しました。';
+                self.message = 'データの更新に失敗しました。';
             })
         }
     }
