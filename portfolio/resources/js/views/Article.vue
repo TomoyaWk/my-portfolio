@@ -59,7 +59,7 @@ export default {
                 self.loading = false;
             })
             .catch((e)=> {
-                router.push('notFound');
+                self.$router.push({ name:"notFound", params:{} });
             })
         },
     },

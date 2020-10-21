@@ -46,7 +46,7 @@ export default new Router({
         {
             // NotFoundPage
             path: '*',
-            name: 'notFound',
+            name: "notFound",
             component: NotFoundPage,
         },
     ]

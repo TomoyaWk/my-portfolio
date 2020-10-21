@@ -20,6 +20,10 @@ class PostController extends Controller
         $model = new Post();
         $postData = $model->getPublicPost();
 
+        if ($postData->isEmpty()) {
+            return response()->json(['error' => 404, 'message' => 'PostData is Not found'], 404);
+        }
+
         return $postData;
     }
 
@@ -34,6 +38,9 @@ class PostController extends Controller
     {
         $model = new Post();
         $postData = $model->getAllPost();
+        if ($postData->isEmpty()) {
+            return response()->json(['error' => 404, 'message' => 'PostData is Not found'], 404);
+        }
 
         return $postData;
     }
@@ -55,7 +62,7 @@ class PostController extends Controller
                 'author_id' => 1
             ]);
         } catch (\Exception $e) {
-            throw new HttpException(500, $e->getMessage());
+            abort(response()->json(['message' => 'error!'], 400));
         }
     }
 
@@ -80,6 +87,10 @@ class PostController extends Controller
     {
         $model = new Post();
         $postData = $model->getIndivPost($id);
+
+        if ($postData->isEmpty()) {
+            return response()->json(['error' => 404, 'message' => 'PostData is Not found'], 404);
+        }
 
         return $postData;
     }

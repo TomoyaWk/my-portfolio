@@ -43,13 +43,14 @@ export default {
     },
     methods: {
         createNewPost: function(){
+            let self = this;
             axios.post('/api/post/create', {
                 "title": this.postTitle,
                 "content":this.postContent,
-                "draft_flg": (this.draftFlg === 1 ? true : false),
+                "draft_flg": (this.draftFlg === true ? 1 : 0),
             })
             .then(function(){
-                router.push('notFound');
+                self.$router.push("/admin");
             })
             .catch(error => {
                 this.message = 'データの更新に失敗しました。';

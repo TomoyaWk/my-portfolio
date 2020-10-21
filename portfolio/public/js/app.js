@@ -2237,12 +2237,13 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(mavon_editor__WEBPACK_IMPORTED_MO
     createNewPost: function createNewPost() {
       var _this = this;
 
+      var self = this;
       axios.post('/api/post/create', {
         "title": this.postTitle,
         "content": this.postContent,
-        "draft_flg": this.draftFlg === 1 ? true : false
+        "draft_flg": this.draftFlg === true ? 1 : 0
       }).then(function () {
-        router.push('notFound');
+        self.$router.push("/admin");
       })["catch"](function (error) {
         _this.message = 'データの更新に失敗しました。';
       });
@@ -2321,7 +2322,10 @@ __webpack_require__.r(__webpack_exports__);
         self.postData = res.data[0];
         self.loading = false;
       })["catch"](function (e) {
-        router.push('notFound');
+        self.$router.push({
+          name: "notFound",
+          params: {}
+        });
       });
     }
   }
@@ -58655,7 +58659,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
   }, {
     // NotFoundPage
     path: '*',
-    name: 'notFound',
+    name: "notFound",
     component: _views_NotFound404__WEBPACK_IMPORTED_MODULE_8__["default"]
   }]
 }));
