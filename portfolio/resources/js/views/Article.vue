@@ -58,6 +58,9 @@ export default {
                 self.postData = res.data[0];
                 self.loading = false;
             })
+            .catch((e)=> {
+                router.push('notFound');
+            })
         },
     },
 };

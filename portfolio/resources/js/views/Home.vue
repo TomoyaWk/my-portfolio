@@ -46,7 +46,7 @@
                         </a>
                     </div>
                 </section>
-                <section class="my-32">
+                <section class="my-12">
                     <Heading heading="SKILLS"></Heading>
                     <div class="flex flex-col lg:flex-row justify-around">
                         <SkillBox

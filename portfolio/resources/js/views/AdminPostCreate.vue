@@ -23,8 +23,6 @@
             <div>
                 <mavon-editor v-model="postContent" language="ja"/>
             </div>
-        </div>
-        
     </div>
 </template>
 
@@ -49,6 +47,9 @@ export default {
                 "title": this.postTitle,
                 "content":this.postContent,
                 "draft_flg": (this.draftFlg === 1 ? true : false),
+            })
+            .then(function(){
+                router.push('notFound');
             })
             .catch(error => {
                 this.message = 'データの更新に失敗しました。';

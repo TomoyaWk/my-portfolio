@@ -52,7 +52,7 @@ class Post extends Model
     {
         $post = DB::table(self::TABLE);
 
-        $data = $post->where('post_id', '=', $id)->get();
+        $data = $post->where(['post_id', '=', $id], ['draft_flg', '=', 0])->get();
 
         return $data;
     }
