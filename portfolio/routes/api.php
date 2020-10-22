@@ -22,8 +22,8 @@ Route::get('post/{id}', 'Api\PostController@show');  //個別記事ページ表�
 
 Route::group(['middleware' => ['auth:api']], function () {
     Route::get('post', 'Api\PostController@index'); //全件表示
-    Route::post('post', 'Api\PostController@store'); //
     Route::post('post/create', 'Api\PostController@create');
+    Route::get('post/edit/{id}', 'Api\PostController@edit');
     Route::post('post/{id}', 'Api\PostController@update');
-    Route::delete('post/{id}', 'Api\PostController@delete');
+    Route::delete('post/{id}', 'Api\PostController@destroy');
 });

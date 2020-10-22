@@ -6,6 +6,7 @@ import Blog from "./views/Blog";
 import Article from "./views/Article";
 import AdminIndex from "./views/AdminIndex";
 import AdminPostCreate from "./views/AdminPostCreate";
+import AdminPostEdit from "./views/AdminPostEdit";
 import NotFoundPage from "./views/NotFound404";
 
 Vue.use(Router);
@@ -42,6 +43,11 @@ export default new Router({
             path: "/admin/post/create",
             name: "adminPostCreate",
             component: AdminPostCreate
+        },
+        {
+            path: "/admin/post/:id",
+            name: "adminPostEdit",
+            component: AdminPostEdit
         },
         {
             // NotFoundPage

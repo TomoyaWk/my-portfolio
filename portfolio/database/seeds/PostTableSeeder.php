@@ -13,8 +13,8 @@ class PostTableSeeder extends Seeder
     {
         \DB::table('post')->insert(
             [
-                'post_id' => '2',
-                'title' => 'テストブログタイトル2',
+                'post_id' => '1',
+                'title' => 'テストブログタイトル1',
                 'content' => '記事テキスト記事テキスト記事テキスト記事テキスト記事テキスト記事テキスト記事テキスト記事テキスト記事テキスト記事テキスト記事テキスト記事テキスト記事テキスト記事テキスト記事テキスト記事テキスト',
                 'draft_flg' => '0',
                 'author_id' => '3',
