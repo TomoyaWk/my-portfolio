@@ -52,12 +52,13 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
-                                                <button type="button" class="btn btn-danger" @click="deletePostData(post.post_id)">削除する</button>
+                                                <button type="button" class="btn btn-danger" @click="deletePostData(post.post_id)" data-dismiss="modal">削除する</button>
                                             </div>
                                     </div>
                                 </div>
                             </div>
                         </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -74,6 +75,10 @@ export default {
         }
     },
     methods: {
+        reload() {
+            this.$router.go({path: this.$router.currentRoute.path, force: true});
+        },
+
         isDraft(val) {
             return (val === 1 ? '下書き' : '公開');
         },
@@ -81,7 +86,19 @@ export default {
             return  (isTarget === true ? "#deleteModal-" + postId : "deleteModal-" + postId);
         },
         deletePostData: function(postId){
-            console.log(postId);
+            let self = this;
+            axios.get('/api/post/delete/'+ postId)
+                .then(res =>{
+                    console.log(res);
+                    this.message = res.data.message;
+                    setTimeout(()=>{
+                        self.message = false;
+                        self.reload();
+                    },3000);
+                })
+                .catch(e =>{
+                    this.message = e.message;
+                })
         }
     },
     created() {

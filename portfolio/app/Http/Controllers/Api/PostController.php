@@ -144,4 +144,32 @@ class PostController extends Controller
         }
         return response()->json(['message' => "指定したデータを削除しました"], 200);
     }
+
+
+    /**
+     * 
+     * 
+     * 
+     */
+    public function uploadImg(Request $req)
+    {
+
+        $files = $req->file();
+
+        $imgNum = 1;
+        $data = [];
+        foreach ($files as $image) {
+
+            $fileName = $image->getClientOriginalName();
+            $destinationPath = public_path() . '/images/';
+            $image->move($destinationPath, $fileName);
+
+            $fullPath = '/images/' . $fileName;
+
+            array_push($data, [$imgNum, $fullPath]);
+            $imgNum++;
+        }
+
+        return response()->json($data, 200);
+    }
 }

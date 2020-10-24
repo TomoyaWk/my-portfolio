@@ -13,7 +13,7 @@
             </router-link>
             
             <div class="form-group">
-                <input class="form-control form-control-lg" type="text" v-model="postTitle" placeholder="記事タイトル">
+                <input class="form-control form-control-lg" required type="text" v-model="postTitle" placeholder="記事タイトル">
             </div>
             <div class="form-group form-check">
                 <input class="form-check-input" type="checkbox" v-model="draftFlg" id="draft">
@@ -26,17 +26,14 @@
                 </div>
             </div>
                 <div v-show="!loading">
-                    <mavon-editor v-model="postContent" language="ja"/>
+                    <mavon-editor ref=md @imgAdd="$imgAdd" @imgDel="$imgDel" v-model="postContent" language="ja"/>
                 </div>
             
     </div>
 </template>
 
 <script>
-import Vue from "vue";
-import mavonEditor from "mavon-editor";
-import "mavon-editor/dist/css/index.css";
-Vue.use(mavonEditor);
+import {mavonEditor} from "mavon-editor";
 
 export default {
     data() {
@@ -46,12 +43,14 @@ export default {
             draftFlg: false,
             postContent: "",
             loading: true,
+            img_file: {},
         }
     },
     created() {
         this.fetchPostData();
     },
     methods: {
+        //既存記事情報の取得
         fetchPostData: function(){
             let url = '/api/post/edit/' + this.$route.params.id;
             let self = this;
@@ -59,18 +58,21 @@ export default {
             .get(url)
             .then(function(res){
                 self.loading = false;
-                console.log(res);
                 self.postTitle = res.data.title;
                 self.postContent = res.data.content;
                 self.draftFlg = (res.data.draft_flg === 1 ? true : false);
-
             })
             .catch((e)=> {
                 self.message = 'データの取得に失敗しました。';
             })
         },
-
+        //記事情報更新
         updatePostData: function(){
+            if(this.img_file){
+                //画像アップロード
+                this.uploadimg();
+            }
+            //記事データ更新
             let self = this;
             axios.post('/api/post/' + this.$route.params.id, {
                 "title": this.postTitle,
@@ -78,7 +80,6 @@ export default {
                 "draft_flg": (this.draftFlg === true ? 1 : 0),
             })
             .then(function(){
-                
                 self.message = "更新しました。";
                 setTimeout(() => {
                     self.message = false;
@@ -88,7 +89,36 @@ export default {
             .catch(error => {
                 self.message = 'データの更新に失敗しました。';
             })
+        },
+
+        $imgAdd(pos, $file){
+            this.img_file[pos] = $file;
+        },
+        $imgDel(pos){
+            delete this.img_file[pos];
+        },
+        uploadimg($e){
+            let formdata = new FormData();
+            for(let _img in this.img_file){
+                formdata.append(_img, this.img_file[_img]);
+            }
+
+            axios({
+                url: '/api/post/upload/img',
+                method: 'post',
+                data: formdata,
+                headers: { 'Content-Type': 'multipart/form-data' },
+            }).then((res) => {
+                let imgs = res.data;
+                
+                
+                for (let img of imgs) {
+                    this.$refs.md.$img2Url(img[0], img[1]);
+                }
+
+            })
         }
-    }
+    },
+    
 }
 </script>

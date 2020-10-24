@@ -2187,6 +2187,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2196,6 +2197,12 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    reload: function reload() {
+      this.$router.go({
+        path: this.$router.currentRoute.path,
+        force: true
+      });
+    },
     isDraft: function isDraft(val) {
       return val === 1 ? '下書き' : '公開';
     },
@@ -2203,17 +2210,29 @@ __webpack_require__.r(__webpack_exports__);
       return isTarget === true ? "#deleteModal-" + postId : "deleteModal-" + postId;
     },
     deletePostData: function deletePostData(postId) {
-      console.log(postId);
+      var _this = this;
+
+      var self = this;
+      axios.get('/api/post/delete/' + postId).then(function (res) {
+        console.log(res);
+        _this.message = res.data.message;
+        setTimeout(function () {
+          self.message = false;
+          self.reload();
+        }, 3000);
+      })["catch"](function (e) {
+        _this.message = e.message;
+      });
     }
   },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
     axios.get('/api/post').then(function (res) {
-      _this.posts = res.data;
-      _this.loading = false;
+      _this2.posts = res.data;
+      _this2.loading = false;
     })["catch"](function (error) {
-      _this.message = 'データの取得に失敗しました。';
+      _this2.message = 'データの取得に失敗しました。';
     });
   }
 });
@@ -2235,90 +2254,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var mavon_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(mavon_editor__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var mavon_editor_dist_css_index_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mavon-editor/dist/css/index.css */ "./node_modules/mavon-editor/dist/css/index.css");
 /* harmony import */ var mavon_editor_dist_css_index_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(mavon_editor_dist_css_index_css__WEBPACK_IMPORTED_MODULE_2__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(mavon_editor__WEBPACK_IMPORTED_MODULE_1___default.a);
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      message: false,
-      postTitle: "",
-      draftFlg: false,
-      postContent: ""
-    };
-  },
-  methods: {
-    createNewPost: function createNewPost() {
-      var self = this;
-      axios.post('/api/post/create', {
-        "title": this.postTitle,
-        "content": this.postContent,
-        "draft_flg": this.draftFlg === true ? 1 : 0
-      }).then(function () {
-        self.message = "記事投稿完了しました。";
-        setTimeout(function () {
-          self.message = false;
-          self.$router.push("/admin");
-        }, 5000);
-      })["catch"](function (error) {
-        self.message = 'データの更新に失敗しました。';
-      });
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/AdminPostEdit.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/AdminPostEdit.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var mavon_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mavon-editor */ "./node_modules/mavon-editor/dist/mavon-editor.js");
-/* harmony import */ var mavon_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(mavon_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var mavon_editor_dist_css_index_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mavon-editor/dist/css/index.css */ "./node_modules/mavon-editor/dist/css/index.css");
-/* harmony import */ var mavon_editor_dist_css_index_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(mavon_editor_dist_css_index_css__WEBPACK_IMPORTED_MODULE_2__);
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2358,19 +2299,150 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(mavon_editor__WEBPACK_IMPORTED_MO
       postTitle: "",
       draftFlg: false,
       postContent: "",
-      loading: true
+      img_file: {}
+    };
+  },
+  methods: {
+    createNewPost: function createNewPost() {
+      if (this.img_file) {
+        //画像アップロード
+        this.uploadimg();
+      }
+
+      var self = this;
+      axios.post('/api/post/create', {
+        "title": this.postTitle,
+        "content": this.postContent,
+        "draft_flg": this.draftFlg === true ? 1 : 0
+      }).then(function () {
+        self.message = "記事投稿完了しました。";
+        setTimeout(function () {
+          self.message = false;
+          self.$router.push("/admin");
+        }, 3000);
+      })["catch"](function (error) {
+        self.message = 'データの更新に失敗しました。';
+      });
+    },
+    $imgAdd: function $imgAdd(pos, $file) {
+      this.img_file[pos] = $file;
+    },
+    $imgDel: function $imgDel(pos) {
+      delete this.img_file[pos];
+    },
+    uploadimg: function uploadimg($e) {
+      var _this = this;
+
+      var formdata = new FormData();
+
+      for (var _img in this.img_file) {
+        formdata.append(_img, this.img_file[_img]);
+      }
+
+      axios({
+        url: '/api/post/upload/img',
+        method: 'post',
+        data: formdata,
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (res) {
+        var imgs = res.data;
+
+        var _iterator = _createForOfIteratorHelper(imgs),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var img = _step.value;
+
+            _this.$refs.md.$img2Url(img[0], img[1]);
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/AdminPostEdit.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/AdminPostEdit.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var mavon_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mavon-editor */ "./node_modules/mavon-editor/dist/mavon-editor.js");
+/* harmony import */ var mavon_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mavon_editor__WEBPACK_IMPORTED_MODULE_0__);
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      message: false,
+      postTitle: "",
+      draftFlg: false,
+      postContent: "",
+      loading: true,
+      img_file: {}
     };
   },
   created: function created() {
     this.fetchPostData();
   },
   methods: {
+    //既存記事情報の取得
     fetchPostData: function fetchPostData() {
       var url = '/api/post/edit/' + this.$route.params.id;
       var self = this;
       axios.get(url).then(function (res) {
         self.loading = false;
-        console.log(res);
         self.postTitle = res.data.title;
         self.postContent = res.data.content;
         self.draftFlg = res.data.draft_flg === 1 ? true : false;
@@ -2378,7 +2450,14 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(mavon_editor__WEBPACK_IMPORTED_MO
         self.message = 'データの取得に失敗しました。';
       });
     },
+    //記事情報更新
     updatePostData: function updatePostData() {
+      if (this.img_file) {
+        //画像アップロード
+        this.uploadimg();
+      } //記事データ更新
+
+
       var self = this;
       axios.post('/api/post/' + this.$route.params.id, {
         "title": this.postTitle,
@@ -2392,6 +2471,47 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(mavon_editor__WEBPACK_IMPORTED_MO
         }, 5000);
       })["catch"](function (error) {
         self.message = 'データの更新に失敗しました。';
+      });
+    },
+    $imgAdd: function $imgAdd(pos, $file) {
+      this.img_file[pos] = $file;
+    },
+    $imgDel: function $imgDel(pos) {
+      delete this.img_file[pos];
+    },
+    uploadimg: function uploadimg($e) {
+      var _this = this;
+
+      var formdata = new FormData();
+
+      for (var _img in this.img_file) {
+        formdata.append(_img, this.img_file[_img]);
+      }
+
+      axios({
+        url: '/api/post/upload/img',
+        method: 'post',
+        data: formdata,
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (res) {
+        var imgs = res.data;
+
+        var _iterator = _createForOfIteratorHelper(imgs),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var img = _step.value;
+
+            _this.$refs.md.$img2Url(img[0], img[1]);
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
       });
     }
   }
@@ -42393,7 +42513,10 @@ var render = function() {
                                   "button",
                                   {
                                     staticClass: "btn btn-danger",
-                                    attrs: { type: "button" },
+                                    attrs: {
+                                      type: "button",
+                                      "data-dismiss": "modal"
+                                    },
                                     on: {
                                       click: function($event) {
                                         return _vm.deletePostData(post.post_id)
@@ -42518,7 +42641,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control form-control-lg",
-          attrs: { type: "text", placeholder: "記事タイトル" },
+          attrs: { required: "", type: "text", placeholder: "記事タイトル" },
           domProps: { value: _vm.postTitle },
           on: {
             input: function($event) {
@@ -42582,7 +42705,9 @@ var render = function() {
         "div",
         [
           _c("mavon-editor", {
+            ref: "md",
             attrs: { language: "ja" },
+            on: { imgAdd: _vm.$imgAdd, imgDel: _vm.$imgDel },
             model: {
               value: _vm.postContent,
               callback: function($$v) {
@@ -42669,7 +42794,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control form-control-lg",
-          attrs: { type: "text", placeholder: "記事タイトル" },
+          attrs: { required: "", type: "text", placeholder: "記事タイトル" },
           domProps: { value: _vm.postTitle },
           on: {
             input: function($event) {
@@ -42762,7 +42887,9 @@ var render = function() {
         },
         [
           _c("mavon-editor", {
+            ref: "md",
             attrs: { language: "ja" },
+            on: { imgAdd: _vm.$imgAdd, imgDel: _vm.$imgDel },
             model: {
               value: _vm.postContent,
               callback: function($$v) {
@@ -58461,6 +58588,10 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./router */ "./resources/js/router.js");
+/* harmony import */ var mavon_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mavon-editor */ "./node_modules/mavon-editor/dist/mavon-editor.js");
+/* harmony import */ var mavon_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(mavon_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var mavon_editor_dist_css_index_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mavon-editor/dist/css/index.css */ "./node_modules/mavon-editor/dist/css/index.css");
+/* harmony import */ var mavon_editor_dist_css_index_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(mavon_editor_dist_css_index_css__WEBPACK_IMPORTED_MODULE_2__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -58470,6 +58601,10 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
+ // use
+
+Vue.use(mavon_editor__WEBPACK_IMPORTED_MODULE_1___default.a);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -58490,7 +58625,7 @@ Vue.component("HeaderMenu", __webpack_require__(/*! ./components/HeaderMenu.vue 
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new Vue({
+var vm = new Vue({
   router: _router__WEBPACK_IMPORTED_MODULE_0__["default"],
   el: "#app"
 });

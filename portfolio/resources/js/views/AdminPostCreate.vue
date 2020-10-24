@@ -13,7 +13,7 @@
             </router-link>
             
             <div class="form-group">
-                <input class="form-control form-control-lg" type="text" v-model="postTitle" placeholder="記事タイトル">
+                <input class="form-control form-control-lg" required type="text" v-model="postTitle" placeholder="記事タイトル">
             </div>
             <div class="form-group form-check">
                 <input class="form-check-input" type="checkbox" v-model="draftFlg" id="draft">
@@ -21,7 +21,7 @@
             </div>
             
             <div>
-                <mavon-editor v-model="postContent" language="ja"/>
+                <mavon-editor ref=md @imgAdd="$imgAdd" @imgDel="$imgDel" v-model="postContent" language="ja"/>
             </div>
     </div>
 </template>
@@ -39,10 +39,16 @@ export default {
             postTitle: "",
             draftFlg: false,
             postContent: "",
+            img_file: {},
         }
     },
     methods: {
         createNewPost: function(){
+            if(this.img_file){
+                //画像アップロード
+                this.uploadimg();
+            }
+            
             let self = this;
             axios.post('/api/post/create', {
                 "title": this.postTitle,
@@ -56,10 +62,36 @@ export default {
                 setTimeout(() => {
                     self.message = false;
                     self.$router.push("/admin");
-                }, 5000); 
+                }, 3000); 
             })
             .catch(error => {
                 self.message = 'データの更新に失敗しました。';
+            })
+        },
+        $imgAdd(pos, $file){
+            this.img_file[pos] = $file;
+        },
+        $imgDel(pos){
+            delete this.img_file[pos];
+        },
+        uploadimg($e){
+            let formdata = new FormData();
+            for(let _img in this.img_file){
+                formdata.append(_img, this.img_file[_img]);
+            }
+
+            axios({
+                url: '/api/post/upload/img',
+                method: 'post',
+                data: formdata,
+                headers: { 'Content-Type': 'multipart/form-data' },
+            }).then((res) => {
+                let imgs = res.data;
+                
+                for (let img of imgs) {
+                    this.$refs.md.$img2Url(img[0], img[1]);
+                }
+
             })
         }
     }

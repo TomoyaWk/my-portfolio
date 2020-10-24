@@ -8,6 +8,11 @@ require("./bootstrap");
 import router from "./router";
 window.Vue = require("vue");
 
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+// use
+Vue.use(mavonEditor)
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -31,7 +36,8 @@ Vue.component("HeaderMenu", require("./components/HeaderMenu.vue").default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
+const vm = new Vue({
     router,
     el: "#app"
 });
+
