@@ -48,25 +48,26 @@ export default {
                 //画像アップロード
                 this.uploadimg();
             }
-            
-            let self = this;
-            axios.post('/api/post/create', {
-                "title": this.postTitle,
-                "content":this.postContent,
-                "draft_flg": (this.draftFlg === true ? 1 : 0),
-            })
-            .then(function(){
-                
-                self.message = "記事投稿完了しました。";
 
-                setTimeout(() => {
-                    self.message = false;
-                    self.$router.push("/admin");
-                }, 3000); 
-            })
-            .catch(error => {
-                self.message = 'データの更新に失敗しました。';
-            })
+            let self = this;
+            setTimeout(() => {
+                axios.post('/api/post/create', {
+                    "title": this.postTitle,
+                    "content":this.postContent,
+                    "draft_flg": (this.draftFlg === true ? 1 : 0),
+                })
+                .then(function(){
+                    
+                    self.message = "記事投稿完了しました。";
+                    setTimeout(() => {
+                        self.message = false;
+                        self.$router.push("/admin");
+                    }, 3000); 
+                })
+                .catch(error => {
+                    self.message = 'データの更新に失敗しました。';
+                })
+            },2000);
         },
         $imgAdd(pos, $file){
             this.img_file[pos] = $file;

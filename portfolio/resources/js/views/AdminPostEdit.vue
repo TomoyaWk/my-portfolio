@@ -44,6 +44,7 @@ export default {
             postContent: "",
             loading: true,
             img_file: {},
+            postProcessing: false
         }
     },
     created() {
@@ -70,25 +71,32 @@ export default {
         updatePostData: function(){
             if(this.img_file){
                 //画像アップロード
+                
+
                 this.uploadimg();
+                
             }
             //記事データ更新
             let self = this;
-            axios.post('/api/post/' + this.$route.params.id, {
-                "title": this.postTitle,
-                "content":this.postContent,
-                "draft_flg": (this.draftFlg === true ? 1 : 0),
-            })
-            .then(function(){
-                self.message = "更新しました。";
-                setTimeout(() => {
-                    self.message = false;
-                    self.$router.push("/admin");
-                }, 5000); 
-            })
-            .catch(error => {
-                self.message = 'データの更新に失敗しました。';
-            })
+            setTimeout(() => {
+                axios.post('/api/post/' + this.$route.params.id, {
+                    "title": this.postTitle,
+                    "content":this.postContent,
+                    "draft_flg": (this.draftFlg === true ? 1 : 0),
+                })
+
+                .then(function(){
+                    self.message = "更新しました。";
+                    setTimeout(() => {
+                        self.message = false;
+                        self.$router.push("/admin");
+                    }, 5000); 
+                })
+                
+                .catch(error => {
+                    self.message = 'データの更新に失敗しました。';
+                })
+            },2000);
         },
 
         $imgAdd(pos, $file){
@@ -97,7 +105,7 @@ export default {
         $imgDel(pos){
             delete this.img_file[pos];
         },
-        uploadimg($e){
+        async uploadimg($e){
             let formdata = new FormData();
             for(let _img in this.img_file){
                 formdata.append(_img, this.img_file[_img]);
@@ -110,12 +118,11 @@ export default {
                 headers: { 'Content-Type': 'multipart/form-data' },
             }).then((res) => {
                 let imgs = res.data;
-                
+                this.message = "画像アップロード中";
                 
                 for (let img of imgs) {
                     this.$refs.md.$img2Url(img[0], img[1]);
                 }
-
             })
         }
     },
