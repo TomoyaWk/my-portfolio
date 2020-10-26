@@ -10,8 +10,10 @@
                 <div class="flex flex-col lg:flex-row lg:flex-wrap">
                     <WorksBox
                         title="ポートフォリオサイト"
+                        img-src="/img/work-1.png"
                         :skills="useTech"
                         note="このサイトです、初めての個人開発。"
+                        article-link="/blog/1"
                     ></WorksBox>
                     <!-- <WorksBox
                         title="ポートフォリオサイト"

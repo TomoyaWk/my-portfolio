@@ -2116,9 +2116,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["title", "note", "skills"],
+  props: ["title", "imgSrc", "note", "skills", "articleLink"],
   computed: {}
 });
 
@@ -2933,6 +2932,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Heading_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Heading.vue */ "./resources/js/components/Heading.vue");
 /* harmony import */ var _components_FadeAnimation_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/FadeAnimation.vue */ "./resources/js/components/FadeAnimation.vue");
 /* harmony import */ var _components_WorksBox_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/WorksBox.vue */ "./resources/js/components/WorksBox.vue");
+//
+//
 //
 //
 //
@@ -43175,7 +43176,7 @@ var render = function() {
     [
       _c("img", {
         staticClass: "w-full h-auto",
-        attrs: { src: "https://placehold.jp/320x240.png", alt: _vm.title }
+        attrs: { src: _vm.imgSrc, alt: _vm.title }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "my-5" }, [
@@ -43204,15 +43205,16 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c(
-        "button",
+        "router-link",
         {
           staticClass:
             "bg-green-600 text-white font-bold my-3 py-2 w-full items-center rounded hover:opacity-75",
-          attrs: { onclick: "location.href='#'" }
+          attrs: { tag: "button", to: _vm.articleLink }
         },
         [_vm._v("\n        Detail\n    ")]
       )
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = []
@@ -44199,8 +44201,10 @@ var render = function() {
                 _c("WorksBox", {
                   attrs: {
                     title: "ポートフォリオサイト",
+                    "img-src": "/img/work-1.png",
                     skills: _vm.useTech,
-                    note: "このサイトです、初めての個人開発。"
+                    note: "このサイトです、初めての個人開発。",
+                    "article-link": "/blog/1"
                   }
                 })
               ],

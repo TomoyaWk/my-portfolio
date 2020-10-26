@@ -1,7 +1,7 @@
 <template>
     <div class="w-2/5 mx-auto my-5 p-3 border-green-600 border-2">
         <img
-            src="https://placehold.jp/320x240.png"
+            :src="imgSrc"
             :alt="title"
             class="w-full h-auto"
         />
@@ -20,18 +20,17 @@
                 </li>
             </ul>
         </div>
-        <button
+        <router-link tag="button" :to="articleLink"
             class="bg-green-600 text-white font-bold my-3 py-2 w-full items-center rounded hover:opacity-75"
-            onclick="location.href='#'"
         >
             Detail
-        </button>
+        </router-link>
     </div>
 </template>
 
 <script>
 export default {
-    props: ["title", "note", "skills"],
+    props: ["title", "imgSrc", "note", "skills", "articleLink"],
     computed: {}
 };
 </script>
