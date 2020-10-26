@@ -43,10 +43,13 @@ export default {
         }
     },
     methods: {
-        createNewPost: function(){
+        /**
+         * 記事投稿
+         */
+        createNewPost: async function(){
             if(this.img_file){
                 //画像アップロード
-                this.uploadimg();
+                const upd = await this.uploadimg();
             }
 
             let self = this;
@@ -67,14 +70,22 @@ export default {
                 .catch(error => {
                     self.message = 'データの更新に失敗しました。';
                 })
-            },2000);
+            }, 2000);
         },
+        /**
+         * 画像追加・削除
+         * 
+         */
         $imgAdd(pos, $file){
             this.img_file[pos] = $file;
         },
         $imgDel(pos){
             delete this.img_file[pos];
         },
+        /**
+         * 画像アップロード
+         * 
+         */
         uploadimg($e){
             let formdata = new FormData();
             for(let _img in this.img_file){
@@ -92,7 +103,6 @@ export default {
                 for (let img of imgs) {
                     this.$refs.md.$img2Url(img[0], img[1]);
                 }
-
             })
         }
     }

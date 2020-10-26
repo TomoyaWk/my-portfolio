@@ -67,17 +67,16 @@ export default {
                 self.message = 'データの取得に失敗しました。';
             })
         },
-        //記事情報更新
-        updatePostData: function(){
+        /**
+         * 記事情報更新
+         */
+        updatePostData: async function(){
             if(this.img_file){
                 //画像アップロード
-                
-
-                this.uploadimg();
-                
+                const upd = await this.uploadimg();
             }
-            //記事データ更新
             let self = this;
+            
             setTimeout(() => {
                 axios.post('/api/post/' + this.$route.params.id, {
                     "title": this.postTitle,
@@ -86,26 +85,37 @@ export default {
                 })
 
                 .then(function(){
+                    console.log(self.postContent);
                     self.message = "更新しました。";
                     setTimeout(() => {
                         self.message = false;
                         self.$router.push("/admin");
                     }, 5000); 
                 })
-                
+
                 .catch(error => {
                     self.message = 'データの更新に失敗しました。';
-                })
-            },2000);
+                })        
+            }, 2000);
+
+            
         },
 
+        /**
+         * 画像追加・削除
+         * 
+         */
         $imgAdd(pos, $file){
             this.img_file[pos] = $file;
         },
         $imgDel(pos){
             delete this.img_file[pos];
         },
-        async uploadimg($e){
+        /**
+         * 画像アップロード
+         * 
+         */
+        uploadimg($e){
             let formdata = new FormData();
             for(let _img in this.img_file){
                 formdata.append(_img, this.img_file[_img]);

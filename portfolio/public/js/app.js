@@ -2260,18 +2260,26 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var mavon_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mavon-editor */ "./node_modules/mavon-editor/dist/mavon-editor.js");
-/* harmony import */ var mavon_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(mavon_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var mavon_editor_dist_css_index_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mavon-editor/dist/css/index.css */ "./node_modules/mavon-editor/dist/css/index.css");
-/* harmony import */ var mavon_editor_dist_css_index_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(mavon_editor_dist_css_index_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var mavon_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mavon-editor */ "./node_modules/mavon-editor/dist/mavon-editor.js");
+/* harmony import */ var mavon_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(mavon_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var mavon_editor_dist_css_index_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mavon-editor/dist/css/index.css */ "./node_modules/mavon-editor/dist/css/index.css");
+/* harmony import */ var mavon_editor_dist_css_index_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(mavon_editor_dist_css_index_css__WEBPACK_IMPORTED_MODULE_3__);
+
+
 function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -2303,7 +2311,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(mavon_editor__WEBPACK_IMPORTED_MODULE_1___default.a);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(mavon_editor__WEBPACK_IMPORTED_MODULE_2___default.a);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2315,37 +2323,77 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(mavon_editor__WEBPACK_IMPORTED_MO
     };
   },
   methods: {
-    createNewPost: function createNewPost() {
-      var _this = this;
+    /**
+     * 記事投稿
+     */
+    createNewPost: function () {
+      var _createNewPost = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var _this = this;
 
-      if (this.img_file) {
-        //画像アップロード
-        this.uploadimg();
+        var upd, self;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (!this.img_file) {
+                  _context.next = 4;
+                  break;
+                }
+
+                _context.next = 3;
+                return this.uploadimg();
+
+              case 3:
+                upd = _context.sent;
+
+              case 4:
+                self = this;
+                setTimeout(function () {
+                  axios.post('/api/post/create', {
+                    "title": _this.postTitle,
+                    "content": _this.postContent,
+                    "draft_flg": _this.draftFlg === true ? 1 : 0
+                  }).then(function () {
+                    self.message = "記事投稿完了しました。";
+                    setTimeout(function () {
+                      self.message = false;
+                      self.$router.push("/admin");
+                    }, 3000);
+                  })["catch"](function (error) {
+                    self.message = 'データの更新に失敗しました。';
+                  });
+                }, 2000);
+
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function createNewPost() {
+        return _createNewPost.apply(this, arguments);
       }
 
-      var self = this;
-      setTimeout(function () {
-        axios.post('/api/post/create', {
-          "title": _this.postTitle,
-          "content": _this.postContent,
-          "draft_flg": _this.draftFlg === true ? 1 : 0
-        }).then(function () {
-          self.message = "記事投稿完了しました。";
-          setTimeout(function () {
-            self.message = false;
-            self.$router.push("/admin");
-          }, 3000);
-        })["catch"](function (error) {
-          self.message = 'データの更新に失敗しました。';
-        });
-      }, 2000);
-    },
+      return createNewPost;
+    }(),
+
+    /**
+     * 画像追加・削除
+     * 
+     */
     $imgAdd: function $imgAdd(pos, $file) {
       this.img_file[pos] = $file;
     },
     $imgDel: function $imgDel(pos) {
       delete this.img_file[pos];
     },
+
+    /**
+     * 画像アップロード
+     * 
+     */
     uploadimg: function uploadimg($e) {
       var _this2 = this;
 
@@ -2475,89 +2523,114 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         self.message = 'データの取得に失敗しました。';
       });
     },
-    //記事情報更新
-    updatePostData: function updatePostData() {
-      var _this = this;
 
-      if (this.img_file) {
-        //画像アップロード
-        this.uploadimg();
-      } //記事データ更新
+    /**
+     * 記事情報更新
+     */
+    updatePostData: function () {
+      var _updatePostData = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var _this = this;
 
+        var upd, self;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (!this.img_file) {
+                  _context.next = 4;
+                  break;
+                }
 
-      var self = this;
-      setTimeout(function () {
-        axios.post('/api/post/' + _this.$route.params.id, {
-          "title": _this.postTitle,
-          "content": _this.postContent,
-          "draft_flg": _this.draftFlg === true ? 1 : 0
-        }).then(function () {
-          self.message = "更新しました。";
-          setTimeout(function () {
-            self.message = false;
-            self.$router.push("/admin");
-          }, 5000);
-        })["catch"](function (error) {
-          self.message = 'データの更新に失敗しました。';
-        });
-      }, 2000);
-    },
+                _context.next = 3;
+                return this.uploadimg();
+
+              case 3:
+                upd = _context.sent;
+
+              case 4:
+                self = this;
+                setTimeout(function () {
+                  axios.post('/api/post/' + _this.$route.params.id, {
+                    "title": _this.postTitle,
+                    "content": _this.postContent,
+                    "draft_flg": _this.draftFlg === true ? 1 : 0
+                  }).then(function () {
+                    console.log(self.postContent);
+                    self.message = "更新しました。";
+                    setTimeout(function () {
+                      self.message = false;
+                      self.$router.push("/admin");
+                    }, 5000);
+                  })["catch"](function (error) {
+                    self.message = 'データの更新に失敗しました。';
+                  });
+                }, 2000);
+
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function updatePostData() {
+        return _updatePostData.apply(this, arguments);
+      }
+
+      return updatePostData;
+    }(),
+
+    /**
+     * 画像追加・削除
+     * 
+     */
     $imgAdd: function $imgAdd(pos, $file) {
       this.img_file[pos] = $file;
     },
     $imgDel: function $imgDel(pos) {
       delete this.img_file[pos];
     },
+
+    /**
+     * 画像アップロード
+     * 
+     */
     uploadimg: function uploadimg($e) {
       var _this2 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var formdata, _img;
+      var formdata = new FormData();
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                formdata = new FormData();
+      for (var _img in this.img_file) {
+        formdata.append(_img, this.img_file[_img]);
+      }
 
-                for (_img in _this2.img_file) {
-                  formdata.append(_img, _this2.img_file[_img]);
-                }
+      axios({
+        url: '/api/post/upload/img',
+        method: 'post',
+        data: formdata,
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (res) {
+        var imgs = res.data;
+        _this2.message = "画像アップロード中";
 
-                axios({
-                  url: '/api/post/upload/img',
-                  method: 'post',
-                  data: formdata,
-                  headers: {
-                    'Content-Type': 'multipart/form-data'
-                  }
-                }).then(function (res) {
-                  var imgs = res.data;
-                  _this2.message = "画像アップロード中";
+        var _iterator = _createForOfIteratorHelper(imgs),
+            _step;
 
-                  var _iterator = _createForOfIteratorHelper(imgs),
-                      _step;
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var img = _step.value;
 
-                  try {
-                    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-                      var img = _step.value;
-
-                      _this2.$refs.md.$img2Url(img[0], img[1]);
-                    }
-                  } catch (err) {
-                    _iterator.e(err);
-                  } finally {
-                    _iterator.f();
-                  }
-                });
-
-              case 3:
-              case "end":
-                return _context.stop();
-            }
+            _this2.$refs.md.$img2Url(img[0], img[1]);
           }
-        }, _callee);
-      }))();
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+      });
     }
   }
 });
