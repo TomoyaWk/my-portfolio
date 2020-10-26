@@ -42932,7 +42932,8 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "text-left w-4/5 mx-auto my-5 p-3 border-green-600 border-2 "
+      staticClass:
+        "text-left lg:w-4/5 mx-auto my-5 p-3 border-green-600 border-2 "
     },
     [
       _c(
