@@ -1,1 +1,129 @@
-#markdown-text img{max-width:100%}#markdown-text table{border-collapse:collapse;width:100%}#markdown-text table,#markdown-text td,#markdown-text th{border:1px solid #eaeaea;border-radius:3px;padding:5px}#markdown-text tr:nth-child(2n){background-color:#f8f8f8}#markdown-text body{font-family:Helvetica,Arial,Freesans,clean,sans-serif;padding:1em;margin:auto;max-width:42em;background:#fefefe}#markdown-text h1,#markdown-text h4{font-weight:700}#markdown-text h1{color:#008f2b;font-size:28px}#markdown-text h4{font-size:16px}#markdown-text li,#markdown-text p,#markdown-text table,#markdown-text ul{margin:15px 0}#markdown-text ul{list-style-type:disc}#markdown-text ul ul{list-style-type:circle}#markdown-text ul ul ul{list-style-type:square}#markdown-text code{border-radius:3px;background-color:#f8f8f8;color:inherit;border:1px solid #eaeaea;margin:0 2px;padding:0 5px}#markdown-text a,#markdown-text a:visited{color:#008f2b;background-color:inherit;text-decoration:none}
+#markdown-text img {
+  max-width: 100%;
+}
+
+#markdown-text table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#markdown-text table,
+#markdown-text th,
+#markdown-text td {
+  border: 1px solid #eaeaea;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+#markdown-text tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+#markdown-text body {
+  font-family: Helvetica, Arial, Freesans, clean, sans-serif;
+  padding: 1em;
+  margin: auto;
+  max-width: 42em;
+  background: #fefefe;
+}
+
+#markdown-text h1,
+#markdown-text h2,
+#markdown-text h3,
+#markdown-text h4,
+#markdown-text h5,
+#markdown-text h6 {
+  font-weight: bold;
+}
+
+#markdown-text h1 {
+  color: #008f2b;
+  font-size: 28px;
+}
+
+#markdown-text h2 {
+  border-bottom: 1px solid #008f2b;
+  color: #000000;
+  font-size: 24px;
+}
+
+#markdown-text h3 {
+  font-size: 18px;
+}
+
+#markdown-text h4 {
+  font-size: 16px;
+}
+
+#markdown-text h5 {
+  font-size: 14px;
+}
+
+#markdown-text h6 {
+  color: #777777;
+  background-color: inherit;
+  font-size: 14px;
+}
+
+#markdown-text hr {
+  height: 0.2em;
+  border: 0;
+  color: #cccccc;
+  background-color: #cccccc;
+}
+
+#markdown-text p,
+#markdown-text blockquote,
+#markdown-text ul,
+#markdown-text ol,
+#markdown-text dl,
+#markdown-text li,
+#markdown-text table,
+#markdown-text pre {
+  margin: 15px 0;
+}
+
+#markdown-text ul {
+  list-style-type: disc;
+}
+
+#markdown-text ul ul {
+  list-style-type: circle;
+}
+
+#markdown-text ul ul ul {
+  list-style-type: square;
+}
+
+#markdown-text code,
+#markdown-text pre {
+  border-radius: 3px;
+  background-color: #f8f8f8;
+  color: inherit;
+}
+
+#markdown-text code {
+  border: 1px solid #eaeaea;
+  margin: 0 2px;
+  padding: 0 5px;
+}
+
+#markdown-text pre {
+  border: 1px solid #cccccc;
+  line-height: 1.25em;
+  overflow: auto;
+  padding: 6px 10px;
+}
+
+#markdown-text pre > code {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#markdown-text a,
+#markdown-text a:visited {
+  color: #008f2b;
+  background-color: inherit;
+  text-decoration: none;
+}

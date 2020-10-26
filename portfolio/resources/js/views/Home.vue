@@ -12,7 +12,7 @@
                             alt="アイコン"
                         />
                     </div>
-
+                    <div class="w-10/12 mx-auto">
                     <p class="text-base my-5 mx-1">
                         I`m Tomoya Wakamatsu,web developer working in Tokyo.
                     </p>
@@ -21,7 +21,7 @@
                         2019/4から、都内のSierでプログラマ/webアプリエンジニアとして働いています。<br />
                         フロントエンドからインフラまで幅広い知識を身に着けたいと日々勉強しています。
                     </p>
-
+                    </div>
                     <div class="flex flex-row justify-center my-5">
                         <a href="https://twitter.com/waka_000" target="_blank">
                             <img
