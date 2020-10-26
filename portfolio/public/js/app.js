@@ -43067,11 +43067,18 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "my-5 mx-3" }, [
-    _c("h1", { staticClass: "font-bold text-5xl text-green-600 text-center" }, [
-      _c("span", { staticClass: "border-green-600 border-b-2" }, [
-        _vm._v(_vm._s(_vm.heading))
-      ])
-    ])
+    _c(
+      "h1",
+      {
+        staticClass:
+          "font-bold lg:text-5xl text-4xl  text-green-600 text-center"
+      },
+      [
+        _c("span", { staticClass: "border-green-600 border-b-2" }, [
+          _vm._v(_vm._s(_vm.heading))
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = []
@@ -43172,9 +43179,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass: "lg:w-2/5 w-10/12 mx-auto my-5 p-3 border-green-600 border-2"
-    },
+    { staticClass: "lg:w-2/5 mx-auto my-5 p-3 border-green-600 border-2" },
     [
       _c("img", {
         staticClass: "w-full h-auto",
@@ -43814,7 +43819,7 @@ var render = function() {
       _c("HeaderMenu"),
       _vm._v(" "),
       _c("FadeAnimation", [
-        _c("div", [
+        _c("div", { staticClass: "w-10/12 mx-auto" }, [
           _vm.loading
             ? _c("div", { staticClass: "loader" }, [_vm._v("Now loading...")])
             : _c("div", [
@@ -43825,7 +43830,7 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "article container w-2/5 mx-auto" },
+                      { staticClass: "article container lg:w-2/5 mx-auto" },
                       [
                         _c(
                           "time",
@@ -43882,7 +43887,7 @@ var render = function() {
       _c("FadeAnimation", [
         _c(
           "div",
-          { staticClass: "container mx-auto text-center" },
+          { staticClass: "container w-10/12 mx-auto text-center" },
           [
             _c("Heading", { attrs: { heading: "BLOG" } }),
             _vm._v(" "),
@@ -43971,7 +43976,7 @@ var render = function() {
       _c("HeaderMenu"),
       _vm._v(" "),
       _c("FadeAnimation", [
-        _c("div", { staticClass: "container mx-auto text-center" }, [
+        _c("div", { staticClass: "container w-10/12 mx-auto text-center" }, [
           _c(
             "section",
             [
@@ -43985,7 +43990,7 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "w-10/12 mx-auto" }, [
+              _c("div", { staticClass: "mx-auto" }, [
                 _c("p", { staticClass: "text-base my-5 mx-1" }, [
                   _vm._v(
                     "\n                    I`m Tomoya Wakamatsu,web developer working in Tokyo.\n                "
@@ -44188,7 +44193,7 @@ var render = function() {
       _c("FadeAnimation", [
         _c(
           "div",
-          { staticClass: "container mx-auto text-center" },
+          { staticClass: "container w-10/12 mx-auto text-center" },
           [
             _c("Heading", { attrs: { heading: "WORKS" } }),
             _vm._v(" "),

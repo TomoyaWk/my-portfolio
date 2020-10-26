@@ -1,5 +1,5 @@
 <template>
-    <div class="lg:w-2/5 w-10/12 mx-auto my-5 p-3 border-green-600 border-2">
+    <div class="lg:w-2/5 mx-auto my-5 p-3 border-green-600 border-2">
         <img
             :src="imgSrc"
             :alt="title"
