@@ -33,6 +33,9 @@ import "mavon-editor/dist/css/index.css";
 Vue.use(mavonEditor);
 
 export default {
+    components: {
+        mavonEditor
+    },
     data() {
         return {
             message: false,

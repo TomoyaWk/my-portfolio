@@ -2312,6 +2312,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(mavon_editor__WEBPACK_IMPORTED_MODULE_2___default.a);
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    mavonEditor: mavon_editor__WEBPACK_IMPORTED_MODULE_2___default.a
+  },
   data: function data() {
     return {
       message: false,
@@ -2444,8 +2447,12 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(mavon_editor__WEBPACK_IMPORTED_MO
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var mavon_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mavon-editor */ "./node_modules/mavon-editor/dist/mavon-editor.js");
-/* harmony import */ var mavon_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(mavon_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var mavon_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mavon-editor */ "./node_modules/mavon-editor/dist/mavon-editor.js");
+/* harmony import */ var mavon_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(mavon_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var mavon_editor_dist_css_index_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mavon-editor/dist/css/index.css */ "./node_modules/mavon-editor/dist/css/index.css");
+/* harmony import */ var mavon_editor_dist_css_index_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(mavon_editor_dist_css_index_css__WEBPACK_IMPORTED_MODULE_3__);
 
 
 function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
@@ -2493,7 +2500,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 
+
+
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(mavon_editor__WEBPACK_IMPORTED_MODULE_2__["mavonEditor"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    mavonEditor: mavon_editor__WEBPACK_IMPORTED_MODULE_2__["mavonEditor"]
+  },
   data: function data() {
     return {
       message: false,
@@ -7407,7 +7420,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/mavon-editor/dist/css/index.css?197f":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/mavon-editor/dist/css/index.css":
 /*!**************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--8-1!./node_modules/postcss-loader/src??ref--8-2!./node_modules/mavon-editor/dist/css/index.css ***!
   \**************************************************************************************************************************************/
@@ -38343,7 +38356,7 @@ return jQuery;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../css-loader??ref--8-1!../../../postcss-loader/src??ref--8-2!./index.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/mavon-editor/dist/css/index.css?197f");
+var content = __webpack_require__(/*! !../../../css-loader??ref--8-1!../../../postcss-loader/src??ref--8-2!./index.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/mavon-editor/dist/css/index.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
