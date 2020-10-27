@@ -94,7 +94,6 @@ export default {
                 })
 
                 .then(function(){
-                    console.log(self.postContent);
                     self.message = "更新しました。";
                     setTimeout(() => {
                         self.message = false;

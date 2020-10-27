@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 
@@ -147,29 +149,32 @@ class PostController extends Controller
 
 
     /**
+     * 画像ファイルアップロード
      * 
-     * 
-     * 
+     * @param  \Illuminate\Http\Request
+     * @return \Illuminate\Http\Response
      */
     public function uploadImg(Request $req)
     {
 
         $files = $req->file();
+        try {
+            $imgNum = 1;
+            $data = [];
+            foreach ($files as $image) {
+                $fileName = $image->getClientOriginalName();
+                $disk = Storage::disk('s3');
 
-        $imgNum = 1;
-        $data = [];
-        foreach ($files as $image) {
+                $imgPath = $disk->putFileAs('/blog', $image, $fileName, 'public');
+                $fullPath = $disk->url($imgPath);
 
-            $fileName = $image->getClientOriginalName();
-            $destinationPath = public_path() . '/images/';
-            $image->move($destinationPath, $fileName);
-
-            $fullPath = '/images/' . $fileName;
-
-            array_push($data, [$imgNum, $fullPath]);
-            $imgNum++;
+                array_push($data, [$imgNum, $fullPath]);
+                $imgNum++;
+            }
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'error!'], 400);
         }
-
+        //[[1,url],[2,url]…]の形で返す
         return response()->json($data, 200);
     }
 }
