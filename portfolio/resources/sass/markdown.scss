@@ -21,7 +21,9 @@
     }
 
     body {
-        font-family: Helvetica, Arial, Freesans, clean, sans-serif;
+        font-family: Helvetica Neue, Arial, Hiragino Sans,
+            Hiragino Kaku Gothic ProN, BIZ UDPGothic, Meiryo, sans-serif;
+        font-size: 1.125rem;
         padding: 1em;
         margin: auto;
         max-width: 42em;
@@ -39,25 +41,26 @@
 
     h1 {
         color: #008f2b;
-        font-size: 28px;
+        font-size: 1.875rem;
     }
 
     h2 {
         border-bottom: 1px solid #008f2b;
         color: #000000;
-        font-size: 24px;
+        font-size: 1.5rem;
     }
 
     h3 {
-        font-size: 18px;
+        font-size: 1.25rem;
     }
 
     h4 {
-        font-size: 16px;
+        font-size: 1.125rem;
+        color: #008f2b;
     }
 
     h5 {
-        font-size: 14px;
+        font-size: 1.125rem;
     }
 
     h6 {
@@ -89,9 +92,11 @@
     }
     ul ul {
         list-style-type: circle;
+        text-indent: 0.5em;
     }
     ul ul ul {
         list-style-type: square;
+        text-indent: 0.5em;
     }
 
     code,

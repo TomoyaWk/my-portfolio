@@ -1,5 +1,5 @@
 <template>
-    <div class="mx-auto my-5 p-5 border-green-600 border-2 w-64 h-64">
+    <div class="mx-auto my-5 p-3 border-green-600 border-2 w-64 h-64">
         <h1 class="font-bold text-2xl text-black">{{ category }}</h1>
         <ul class="mt-2">
             <li
@@ -11,7 +11,7 @@
             </li>
         </ul>
 
-        <div v-if="isFw">
+        <div class="mt-2" v-if="isFw">
             <h1 class="font-bold text-2xl text-black">
                 frameworks/library
             </h1>

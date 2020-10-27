@@ -4,7 +4,7 @@
             <div class="my-5">
                 <span class="text-md text-gray-500">{{ postDate }}</span>
             
-            <router-link :to="{ name:'article', params:{ id: postId } }">
+            <router-link :to="{ name:'article', params:{ id: postId } }" class="hover:no-underline hover:text-green-600">
                 <h1 class="font-bold text-2xl text-green-600">
                     <span class="post-title"> {{ postTitle }}</span> 
                 </h1>

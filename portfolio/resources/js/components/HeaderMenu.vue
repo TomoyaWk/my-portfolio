@@ -2,13 +2,13 @@
     <nav class="border-t-8 border-green-600">
         <ul class="flex flex-row  justify-around lg:justify-center my-5">
             <li class="menu font-bold text-2xl text-green-600 lg:mx-20">
-                <router-link to="/">Home</router-link>
+                <router-link to="/" class="no-underline hover:text-green-600">Home</router-link>
             </li>
             <li class="menu font-bold text-2xl text-green-600 lg:mx-20">
-                <router-link to="/works">Work</router-link>
+                <router-link to="/works" class="no-underline hover:text-green-600">Work</router-link>
             </li>
             <li class="menu font-bold text-2xl text-green-600 lg:mx-20">
-                <router-link to="/blog/list">Blog</router-link>
+                <router-link to="/blog/list" class="no-underline hover:text-green-600">Blog</router-link>
             </li>
         </ul>
     </nav>
