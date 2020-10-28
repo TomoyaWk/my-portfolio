@@ -31,6 +31,4 @@ Route::group(['middleware' => ['auth', 'can:admin']], function () {
 Route::get('/admin', 'AdminController@index')->name('admin');
 
 //初期画面表示（vue-routerで以下は設定） 
-Route::get('{any}', function () {
-    return view('home');
-})->where('any', '.*');
+Route::get('{any}', 'HomeController@setOgp')->where('any', '.*');

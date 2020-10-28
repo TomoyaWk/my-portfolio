@@ -8,8 +8,8 @@
                 <div v-else>
                 <article>
                     <Heading :heading="postData.title"></Heading>
-                    <div class="article xl:w-2/5 lg:w-3/6 md:w-auto sm:w-auto mx-auto">
-                        <time class="text-gray-500 mb-3" :datetime="postData.created_at">{{ postData.created_at }}</time>
+                    <div class="text-base xl:w-2/5 lg:w-3/6 md:w-auto sm:w-auto mx-auto">
+                        <time class="text-gray-600 mb-3" :datetime="postData.created_at">{{ postData.created_at }}</time>
                     
                         <ArticleBody :artcle-text="postData.content"></ArticleBody>
                     </div>

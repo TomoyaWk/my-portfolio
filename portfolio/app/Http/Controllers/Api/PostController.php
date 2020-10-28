@@ -96,9 +96,9 @@ class PostController extends Controller
     {
         $postData = Post::where('post_id', $id)->first();
 
-        // if (is_null($postData)) {
-        //     return response()->json(['error' => 404, 'message' => 'PostData is Not found'], 404);
-        // }
+        if (is_null($postData)) {
+            return response()->json(['error' => 404, 'message' => 'PostData is Not found'], 404);
+        }
         return $postData;
     }
 
