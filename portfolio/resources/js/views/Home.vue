@@ -2,7 +2,7 @@
     <div>
         <HeaderMenu></HeaderMenu>
         <FadeAnimation>
-            <div class="container w-10/12 mx-auto text-center">
+            <div class="container mx-auto text-center">
                 <section>
                     <Heading heading="ABOUT ME"></Heading>
                     <div class="avator mx-auto">

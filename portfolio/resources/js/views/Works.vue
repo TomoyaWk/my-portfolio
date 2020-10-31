@@ -2,7 +2,7 @@
     <div>
         <HeaderMenu></HeaderMenu>
         <FadeAnimation>
-            <div class="container w-10/12 mx-auto text-center">
+            <div class="container mx-auto text-center">
                 <Heading heading="WORKS"></Heading>
                 <p class="text-base my-5 mx-1">
                     個人開発で作ったものを載せていく予定です。

@@ -5,7 +5,7 @@
                 <router-link to="/" class="no-underline hover:text-green-600">Home</router-link>
             </li>
             <li class="menu font-bold text-2xl text-green-600 lg:mx-20">
-                <router-link to="/works" class="no-underline hover:text-green-600">Work</router-link>
+                <router-link to="/works" class="no-underline hover:text-green-600">Works</router-link>
             </li>
             <li class="menu font-bold text-2xl text-green-600 lg:mx-20">
                 <router-link to="/blog/list" class="no-underline hover:text-green-600">Blog</router-link>
