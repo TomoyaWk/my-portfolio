@@ -7,11 +7,10 @@
                 <div v-if="loading" class="loader">Now loading...</div>
                 <div v-else>
                 <article>
-                    <Heading :heading="postData.title"></Heading>
-                    <div class="text-base xl:w-2/5 lg:w-3/6 md:w-auto sm:w-auto mx-auto">
-                        <time class="text-gray-600 mb-3" :datetime="postData.created_at">{{ postData.created_at }}</time>
-                    
-                        <ArticleBody :artcle-text="postData.content"></ArticleBody>
+                    <div class="text-base xl:w-2/5 lg:w-3/6 md:w-auto sm:w-auto mx-auto mt-3">
+                        <h1 class="font-bold lg:text-5xl text-4xl text-green-600 text-left">{{ postData.title }}</h1>
+                        <time class="text-gray-600" :datetime="postData.created_at">{{ postData.created_at }}</time>
+                        <ArticleBody :artcle-text="postData.content" class="my-4"></ArticleBody>
                     </div>
                 </article>
                 </div>
@@ -21,7 +20,6 @@
 </template>
 
 <script>
-import Heading from "../components/Heading.vue";
 import FadeAnimation from "../components/FadeAnimation.vue";
 import ArticleBody from "../components/ArticleBody.vue";
 import axios from "axios";
@@ -29,7 +27,6 @@ import axios from "axios";
 
 export default {
     components: {
-        Heading,
         FadeAnimation,
         ArticleBody,
     },

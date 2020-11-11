@@ -1,11 +1,11 @@
 <template>
-    <div class="text-left lg:w-4/5 mx-auto my-5 p-3 border-green-600 border-2 ">
+    <div class="text-left lg:w-2/5 mx-auto my-5">
         
-            <div class="my-5">
-                <span class="text-md text-gray-500">{{ postDate }}</span>
+            <div class="my-3">
+                <span class="text-md text-gray-500 my-1">{{ postDate }}</span>
             
             <router-link :to="{ name:'article', params:{ id: postId } }" class="hover:no-underline hover:text-green-600">
-                <h1 class="font-bold text-2xl text-green-600">
+                <h1 class="font-bold text-2xl text-green-600 my-1">
                     <span class="post-title"> {{ postTitle }}</span> 
                 </h1>
             </router-link>
