@@ -21,9 +21,8 @@ class PostController extends Controller
     {
         $model = new Post();
         $postData = $model->getPublicPost();
-
         if ($postData->isEmpty()) {
-            return response()->json(['error' => 404, 'message' => 'PostData is Not found'], 404);
+            return response()->json(['error' => 404, 'message' => 'PostData is Not found', 'test' => $postData], 200);
         }
 
         return $postData;
@@ -131,7 +130,7 @@ class PostController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * 
+     *
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -150,7 +149,7 @@ class PostController extends Controller
 
     /**
      * 画像ファイルアップロード
-     * 
+     *
      * @param  \Illuminate\Http\Request
      * @return \Illuminate\Http\Response
      */

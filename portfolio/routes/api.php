@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/post/list', 'Api\PostController@list'); //blogページ一覧表示
-Route::get('post/{id}', 'Api\PostController@show');  //個別記事ページ表示
+Route::get('/post/{id}', 'Api\PostController@show');  //個別記事ページ表示
 
 Route::group(['middleware' => ['auth:api']], function () {
     Route::get('post', 'Api\PostController@index'); //全件表示
